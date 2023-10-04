@@ -4,6 +4,7 @@ module ha_test;
 reg a,b;
 wire sum,co;
 
+integer i;
 ha dut(a,b,sum,co);
 
 initial
