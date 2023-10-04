@@ -7,6 +7,11 @@ wire sum,co;
 integer i;
 ha dut(a,b,sum,co);
 
+initial begin
+$dumpvars(1);
+$dumpfile("wave.vcd");
+end
+
 initial
 begin
 $monitor($time,"a=%b b=%b, sum=%b, co=%b",a,b,sum,co);
