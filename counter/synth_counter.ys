@@ -1,0 +1,12 @@
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog counter.v
+synth -top counter
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+clean
+write_verilog -noattr counter_netlist.v
+tee -o counter.rpt stat -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+write_json counter.json
+show -prefix ./netlist -format jpeg
+#!dot -Tpng netlist.dot -o netlist.png
+!netlistsvg counter.json -o counter.svg
