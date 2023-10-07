@@ -7,6 +7,6 @@ clean
 write_verilog -noattr alu_netlist.v
 write_json alu.json
 tee -o alu.rpt stat -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
-show -prefix ./netlist -format jpeg
+show -prefix ./alu.netlist -format jpeg
 !netlistsvg alu.json -o alu.svg
 #!dot -Tpng netlist.dot -o netlist.png
