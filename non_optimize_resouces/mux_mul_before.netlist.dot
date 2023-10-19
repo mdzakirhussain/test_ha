@@ -1,0 +1,26 @@
+digraph "mux_mul" {
+label="mux_mul";
+rankdir="LR";
+remincross=true;
+n4 [ shape=octagon, label="a", color="black", fontcolor="black" ];
+n5 [ shape=octagon, label="b", color="black", fontcolor="black" ];
+n6 [ shape=octagon, label="clk", color="black", fontcolor="black" ];
+n7 [ shape=octagon, label="sel", color="black", fontcolor="black" ];
+n8 [ shape=octagon, label="x", color="black", fontcolor="black" ];
+n9 [ shape=octagon, label="y", color="black", fontcolor="black" ];
+n10 [ shape=octagon, label="z", color="black", fontcolor="black" ];
+c14 [ shape=record, label="{{<p11> A|<p12> B}|$4\n$mul|{<p13> Y}}",  ];
+c15 [ shape=record, label="{{<p11> A|<p12> B}|$3\n$mul|{<p13> Y}}",  ];
+c19 [ shape=record, label="{{<p16> CLK|<p17> D}|$8\n$dff|{<p18> Q}}",  ];
+c21 [ shape=record, label="{{<p11> A|<p12> B|<p20> S}|$6\n$mux|{<p13> Y}}",  ];
+c21:p13:e -> c19:p17:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c19:p18:e -> n10:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c14:p13:e -> c21:p12:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c15:p13:e -> c21:p11:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n4:e -> c15:p11:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n5:e -> c15:p12:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n6:e -> c19:p16:w [color="black", fontcolor="black", label=""];
+n7:e -> c21:p20:w [color="black", fontcolor="black", label=""];
+n8:e -> c14:p11:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n9:e -> c14:p12:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+}

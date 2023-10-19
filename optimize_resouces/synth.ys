@@ -1,0 +1,20 @@
+read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog mux_mul.v
+proc
+clean
+
+opt
+share -aggressive
+
+show -prefix ./mux_mul_before.netlist -format jpeg
+techmap
+
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+clean
+write_verilog -noattr mux_mul_netlist.v
+tee -o mux_mul.rpt stat -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+write_json mux_mul.json
+show -prefix ./mux_mul_after.netlist -format jpeg
+#!dot -Tpng netlist.dot -o netlist.png
+!netlistsvg mux_mul.json -o mux_mul.svg
